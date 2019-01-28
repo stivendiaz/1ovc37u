@@ -17,7 +17,7 @@ app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 //midleware
 const trackVisit = async (req, res, next) => {
-  const pageVisit = await pageView.create({ path: req.route.path, userAgent: req.get('User-Agent') })
+  const pageVisit = await pageView.create({ path: req.originalUrl, userAgent: req.get('User-Agent') })
   console.log(pageVisit)
   next();
 }
